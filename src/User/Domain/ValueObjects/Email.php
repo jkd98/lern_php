@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\ValueObjects\User;
+namespace App\User\Domain\ValueObjects;
 
 readonly class Email {
     private string $value;

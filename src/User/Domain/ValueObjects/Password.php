@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\ValueObjects\Shared;
+namespace App\User\Domain\ValueObjects;
 
 readonly class Password {
     private string $hash;
