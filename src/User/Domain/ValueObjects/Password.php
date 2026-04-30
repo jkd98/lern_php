@@ -2,7 +2,10 @@
 
 namespace App\User\Domain\ValueObjects;
 
-readonly class Password {
+use InvalidArgumentException;
+
+
+final readonly class Password {
     private string $hash;
 
     // EL GUARDUÁN: El constructor es privado. 

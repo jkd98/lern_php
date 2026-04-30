@@ -2,7 +2,10 @@
 
 namespace App\User\Domain\ValueObjects;
 
-readonly class Email {
+use InvalidArgumentException;
+
+
+final readonly class Email {
     private string $value;
 
     private function __construct(string $email) {

@@ -6,7 +6,7 @@ namespace App\Shared\Domain\ValueObjects;
 use Ramsey\Uuid\Uuid;
 use InvalidArgumentException;
 
-readonly class UUIDv7 {
+final readonly class UUIDv7 {
     private string $value;
 
     /**

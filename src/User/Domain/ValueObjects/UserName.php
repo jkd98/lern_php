@@ -4,7 +4,7 @@ namespace App\User\Domain\ValueObjects;
 
 use InvalidArgumentException;
 
-readonly class UserName {
+final readonly class UserName {
     private string $user_name;
 
     private function __contruct(string $user_name){
