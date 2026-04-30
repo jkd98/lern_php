@@ -23,5 +23,7 @@ readonly class User {
         public Password $password
     ) {}
 
-    
+    public function canLoginWith(string $plainPassword): bool {
+    return $this->password->verify($plainPassword);
+}
 }
