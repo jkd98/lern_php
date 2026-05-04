@@ -17,6 +17,10 @@ final readonly class UserName {
     public static function create (string $user_name):self {
         return new self($user_name);
     }
+
+    public function getValue():string {
+        return $this->user_name;
+    }
 }
 
 ?>
