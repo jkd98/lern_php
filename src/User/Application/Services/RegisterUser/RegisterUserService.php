@@ -2,8 +2,10 @@
 
 namespace App\User\Application\Services\RegisterUser;
 
+use App\User\Application\Services\RegisterUser\RegisterUserUseCase;
 use App\User\Application\Services\RegisterUser\RegisterUserRequestDTO;
-use App\User\Application\Services\RegisterUserRegisterUserResponseDTO;
+use App\User\Application\Services\RegisterUser\RegisterUserResponseDTO;
+
 use App\User\Application\Exceptions\EmailAlreadyRegisteredException;
 
 use App\User\Domain\IUserRepository;
@@ -16,9 +18,6 @@ use App\Shared\Domain\ValueObjects\UUIDv7;
 use App\User\Domain\Entities\User;
 
 
-interface RegisterUserUseCase {
-    public function execute(RegisterUserRequestDTO $request): RegisterUserResponseDTO;
-}
 
 final class RegisterUserService implements RegisterUserUseCase {
     public function __construct(private IUserRepository $repository){}
@@ -29,7 +28,7 @@ final class RegisterUserService implements RegisterUserUseCase {
 
         $user_exists = $this->repository->findByEmail($email);
         if($user_exists){
-            throw new EmailAlreadyRegisteredException();
+            throw new EmailAlreadyRegisteredException("El emal ya esta registrado");
         }
 
         // crear al usuario
