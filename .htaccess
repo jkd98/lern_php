@@ -1,0 +1,13 @@
+# .htaccess en la raíz del proyecto (opcional)
+# Objetivo: redirigir /lern_php a /lern_php/public
+# para no exponer carpetas internas como src/.
+
+RewriteEngine On
+
+# Si ya están pidiendo algo dentro de /public, no redirigir de nuevo
+# (evita loops de redirección).
+RewriteCond %{REQUEST_URI} !^/lern_php/public/
+
+# Redirige todo a /public manteniendo la ruta restante.
+# Ejemplo: /lern_php/api/users/register -> /lern_php/public/api/users/register
+RewriteRule ^(.*)$ public/$1 [L]
