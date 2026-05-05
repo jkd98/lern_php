@@ -1,0 +1,13 @@
+# Activa el motor de reescritura de Apache
+RewriteEngine On
+
+# Si la petición apunta a un archivo real (-f) o directorio real (-d),
+# Apache lo sirve directamente (css, js, imágenes, etc.).
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Para cualquier otra ruta, redirige internamente a index.php.
+# QSA = conserva query string (?a=1&b=2)
+# L   = detener el procesamiento de reglas
+RewriteRule ^ index.php [QSA,L]
