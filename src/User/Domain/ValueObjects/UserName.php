@@ -7,7 +7,7 @@ use InvalidArgumentException;
 final readonly class UserName {
     private string $user_name;
 
-    private function __contruct(string $user_name){
+    private function __construct(string $user_name){
         if(strlen($user_name) < 3){
             throw new InvalidArgumentException("El nombre de usuario '$user_name' es demasiado corto.");
         }
