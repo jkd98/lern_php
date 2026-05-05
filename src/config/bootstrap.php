@@ -1,25 +1,28 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__.'/db.php';
+require_once __DIR__ . '/container.php';
 
-use App\User\Infraestructure\Persistence\Pdo\PdoUserRepository;
-use App\User\Application\Services\RegisterUser\RegisterUserService;
-use App\User\Http\Controllers\RegisterUserController;
-
-/**
- * Deveulve la instancia PDO recén creada
- */
-function getPDO() : PDO{
-    return conectar();
-}
-
-/**
- * Construye y devuelve el controlador para el caso de uso "Registrar usuario".
- */
-function createRegisterUserController(PDO $pdo):RegisterUserController{
-    $userRepository = new PdoUserRepository($pdo);
-    $registerUserService = new RegisterUserService($userRepository);
-    $registerUserController = new RegisterUserController($registerUserService);
-    return $registerUserController;
+/*
+|--------------------------------------------------------------------------
+| Bootstrap de la aplicación
+|--------------------------------------------------------------------------
+| "Bootstrap" es el punto de arranque técnico.
+| Aquí NO va lógica de negocio.
+| Aquí solo inicializamos infraestructura de app (contenedor, config, etc.).
+|
+| En este proyecto, bootstrap expone el contenedor para que el front-controller
+| (por ejemplo index.php o tu router principal) pueda pedir dependencias.
+*/
+function appContainer(): array
+{
+    /*
+    | buildContainer() vive en container.php y retorna una estructura mínima:
+    | [
+    |   'get' => function(string $id) { ... }
+    | ]
+    |
+    | Es decir, devolvemos un "resolver" de servicios por id.
+    */
+    return buildContainer();
 }
