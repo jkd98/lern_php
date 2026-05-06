@@ -84,7 +84,7 @@ class Application
      */
     private function bootServices(): void
     {
-        require_once __DIR__ . '/../config/services.php';
+        // ServicesBootstrapper está autocargado vía PSR-4 (Composer autoload)
         (new \App\Config\ServicesBootstrapper)($this->container);
     }
 

@@ -34,10 +34,10 @@ class ServicesBootstrapper
          * Servicio: Conexión a Base de Datos
          *
          * Factory que retorna una instancia PDO.
+         * Se crea usando DatabaseConnection::create()
          */
         $container->register('pdo', static function (Container $container) {
-            require_once __DIR__ . '/db.php';
-            return conectar();
+            return DatabaseConnection::create();
         });
 
         // ====== Application Services ======
