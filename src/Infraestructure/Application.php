@@ -99,8 +99,8 @@ class Application
     {
         // Resolver los handlers desde el contenedor
         // Son instancias que implementan RouteHandlerInterface
-        $registerUserHandler = $this->container->get('register_user_handler');
-        $helloHandler = $this->container->get('hello_handler');
+        $registerUserHandler = fn () => $this->container->get('register_user_handler');
+        $helloHandler = fn () => $this->container->get('hello_handler');
 
         // Registrar en router
         $this->router->register('POST', '/api/users/register', $registerUserHandler);
